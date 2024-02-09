@@ -7,8 +7,6 @@ const cors = require('cors')
 require('dotenv').config()
 const port = process.env.PORT
 // 4343
-// console.log(homeStyleTourPackages);
-
 
 app.use(cors({
     origin: "*"

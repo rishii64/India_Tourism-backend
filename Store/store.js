@@ -1,4 +1,4 @@
-const data = [
+const homeData = [
     {
         "title": "Golden Triangle Tour India",
         "images": {
@@ -185,5 +185,4 @@ const data = [
 
 ];
 
-
-module.exports = data
+module.exports = homeData

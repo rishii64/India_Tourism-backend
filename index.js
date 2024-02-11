@@ -3,9 +3,9 @@ const app = express()
 const store = require('./Store/store')
 const { homeStyleTourPackages, relatedData } = require('./Store/store2')
 const store3 = require('./Store/store3')
+const store4 = require('./Store/store4')
 const cors = require('cors')
-
-require('dotenv').config()
+    require('dotenv').config()
 const port = process.env.PORT
 // 4343
 
@@ -15,6 +15,7 @@ app.use(cors({
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// home page data ----->
 app.get('/', (req, res) => {
     return res.send(store)
 })
@@ -37,6 +38,10 @@ app.get('/style-tour-packages/:styles', (req, res) => {
 // tour packages themes ----->
 app.get('/tourPackagesThemes',(req,res)=>{
     return res.send(store3)
+})
+// places to visit ----->
+app.get('/placesToVisit',(req,res)=>{
+    return res.send(store4)
 })
 
 app.listen(port, (req, res) => {

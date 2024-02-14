@@ -31,6 +31,7 @@ app.get('/tour-packages/:places', (req, res) => {
     let data = store.filter(data => data.title === `${category}`)
     return res.send(data)
 })
+
 // style tour packages ----->
 app.get('/homeStyleTourPackages', (req, res) => {
     return res.send(homeStyleTourPackages)

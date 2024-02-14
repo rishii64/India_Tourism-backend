@@ -14,19 +14,18 @@ route.post('/register', async (req, res) => {
     console.log('Hashed Data:', data);
 
     const insertData = await userCollection.create(data)
-    const token = jwt.sign({ user: data.email }, secretkey)
     res.send({ msg: 'user registered successfully', insertData: insertData })
 })
 
 route.post('/login', async (req, res) => {
     const loginData = req.body
     const checkData = await userCollection.findOne({ email: loginData.email })
-    console.log('LoginData:', checkData);
     if (!checkData) {
         return res.send({ msg: 'User not registered' })
     }
     if (loginData.password === checkData.password) {
-        return res.send({ msg: 'User logged in successfully', userData: checkData })
+        const token = jwt.sign({ user: checkData.email }, secretkey)
+        return res.send({ msg: 'User logged in successfully', userData: checkData, token })
     }
     else {
         return res.send({ msg: 'Password is incorrect' })

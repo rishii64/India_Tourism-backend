@@ -23,7 +23,7 @@ route.post('/register', async (req, res) => {
 route.post('/login', async (req, res) => {
     const loginData = req.body
     const checkData = await userCollection.findOne({ email: loginData.email })
-    console.log(checkData);
+    console.log('LoginData:',checkData);
     if (!checkData) {
         return res.send({ msg: 'User not registered' })
     }
@@ -35,10 +35,6 @@ route.post('/login', async (req, res) => {
     else {
         return res.send({ msg: 'Password is incorrect' })
     }
-})
-
-route.get('/cart',(req,res)=>{
-    return res.send({msg: 'item added'})
 })
 
 module.exports = route

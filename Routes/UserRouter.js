@@ -1,6 +1,6 @@
 const route = require("express").Router()
 // const bcrypt = require('bcrypt')
-const saltRound = 10
+// const saltRound = 10
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const secretkey = process.env.secretKey

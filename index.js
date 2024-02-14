@@ -9,7 +9,7 @@ const store4 = require('./Store/store4')
 const store5 = require('./Store/store5')
 const cors = require('cors')
 const route = require('./Routes/UserRouter')
-const {connection} = require('./config/db')
+const { connection } = require('./config/db')
 
 require('dotenv').config()
 const port = process.env.PORT
@@ -19,7 +19,7 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use('/user',route)
+app.use('/user', route)
 
 // home page data ----->
 app.get('/', (req, res) => {
@@ -31,7 +31,6 @@ app.get('/tour-packages/:places', (req, res) => {
     let data = store.filter(data => data.title === `${category}`)
     return res.send(data)
 })
-
 // style tour packages ----->
 app.get('/homeStyleTourPackages', (req, res) => {
     return res.send(homeStyleTourPackages)

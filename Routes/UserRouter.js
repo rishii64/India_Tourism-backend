@@ -11,10 +11,9 @@ route.post('/register', async (req, res) => {
     const accnt = await userCollection.findOne({ email: data.email })
     if (accnt)
         return res.send({ msg: 'This email is already in use !!' })
-    console.log('Hashed Data:', data);
-
     const insertData = await userCollection.create(data)
-    res.send({ msg: 'user registered successfully', insertData: insertData })
+    const token = jwt.sign({ user: data.email }, secretkey)
+    res.send({ msg: 'user registered successfully', insertData: insertData, token })
 })
 
 route.post('/login', async (req, res) => {
